@@ -45,23 +45,26 @@ print "Creating users..."
 userfile = list(csv.reader(open('ousd_liaisons.csv', 'rb'), delimiter='\t'))
 for row in userfile:
 	department_name = row[0]
-	create_liaison(row[1], row[2], row[3], department_name)
+	phone = None
+	if len(row) > 4:
+		phone = row[4]
+	create_liaison(row[2], row[3], phone, department_name)
 	# Create backup liaisons
-	if len(row) > 5:
-		phone = ""
-		if len(row) > 6:
-			phone = row[6]
-		create_backup_liaison(row[4], row[5], phone, department_name)
-	if len(row) > 8:
-		phone = ""
-		if len(row) > 9:
-			phone = row[9]
-		create_backup_liaison(row[7], row[8], phone, department_name)
-	if len(row) > 11:
-		phone = ""
-		if len(row) > 12:
-			phone = row[12]
-		create_backup_liaison(row[10], row[11], phone, department_name)
+	if len(row) > 6:
+		phone = None
+		if len(row) > 7:
+			phone = row[7]
+		create_backup_liaison(row[5], row[6], phone, department_name)
+	if len(row) > 9:
+		phone = None
+		if len(row) > 10:
+			phone = row[10]
+		create_backup_liaison(row[8], row[9], phone, department_name)
+	if len(row) > 12:
+		phone = None
+		if len(row) > 13:
+			phone = row[13]
+		create_backup_liaison(row[11], row[12], phone, department_name)
 
 print "Finished!"
 
