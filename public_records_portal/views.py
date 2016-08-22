@@ -30,7 +30,7 @@ import csv_export
 from datetime import date, datetime, timedelta
 from filters import *
 import re
-from db_helpers import get_count, get_obj
+from db_helpers import get_count, get_obj, authenticate_login
 from sqlalchemy import func, not_, and_, or_
 import pytz
 
